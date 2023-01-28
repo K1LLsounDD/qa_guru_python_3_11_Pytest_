@@ -13,4 +13,17 @@ def browser_window_size(request):
     return request
 
 
+@pytest.fixture
+def open_desktop_window_size():
+    browser.config.window_width = 1920
+    browser.config.window_height = 1080
+    yield
+    browser.quit()
 
+
+@pytest.fixture
+def open_mobile_window_size():
+    browser.config.window_width = 414
+    browser.config.window_height = 896
+    yield
+    browser.quit()
