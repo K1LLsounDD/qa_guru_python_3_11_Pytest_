@@ -1,7 +1,8 @@
-# 1. Пропустите мобильный тест, если соотношение сторон десктопное (и наоборот);
-# 2. Переопределите параметр с помощью indirect;
+# 1. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ);
+# 2. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ indirect;
 
 import pytest
+from selene.support import by
 from selene.support.shared import browser
 from selene.support.conditions import have
 
@@ -22,9 +23,6 @@ def test_only_mobile_browser_size(browser_window_size):
         pytest.skip(reason='Test only in mobile browser screen resolution.')
     elif browser.config.window_width == 414:
         browser.open('https://github.com/')
-        browser.element(
-            '[href="/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home"]').click()
-        browser.element(
-            '[href="/login?return_to=https%3A%2F%2Fgithub.com%2Fsignup%3Fref_cta%3DSign%2Bup%26ref_loc%3Dheader%2Blogged%2Bout%26ref_page%3D%252F%26source%3Dheader-home"]'
-        ).click()
+        browser.element('.Button-content .Button-label').click()
+        browser.element(by.partial_text('Sign in')).click()
         assert browser.element('#login').should(have.text('Sign in to GitHub'))
