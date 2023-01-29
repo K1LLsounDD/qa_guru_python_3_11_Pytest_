@@ -1,3 +1,6 @@
+# 1. Пропустите мобильный тест, если соотношение сторон десктопное (и наоборот);
+# 2. Переопределите параметр с помощью indirect;
+
 import pytest
 from selene.support.shared import browser
 from selene.support.conditions import have

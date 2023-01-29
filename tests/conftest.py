@@ -1,3 +1,5 @@
+# Сделайте разные фикстуры для каждого теста.
+
 import pytest
 from selene.support.shared import browser
 

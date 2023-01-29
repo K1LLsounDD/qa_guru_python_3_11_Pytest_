@@ -1,3 +1,5 @@
+# 2. Переопределите параметр с помощью indirect;
+
 import pytest
 from selene.support.conditions import have
 from selene.support.shared import browser
